@@ -1,5 +1,6 @@
 package com.sbd.sbdproject.model.game;
 
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -10,6 +11,10 @@ import org.springframework.stereotype.Service;
 public class GameService {
 
   private final GameRepository gameRepository;
+
+  public List<Game> allGames(){
+    return gameRepository.findAll();
+  }
 
   public Page<Game> getAll(int page, int size) {
     return gameRepository.findAll(PageRequest.of(page, size));

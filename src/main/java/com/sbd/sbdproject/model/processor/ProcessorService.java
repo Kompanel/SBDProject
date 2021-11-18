@@ -1,5 +1,6 @@
 package com.sbd.sbdproject.model.processor;
 
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -20,4 +21,5 @@ public class ProcessorService {
   public List<Processor> getProcessors() {
     return processorRepository.findAll();
   }
+
 }
