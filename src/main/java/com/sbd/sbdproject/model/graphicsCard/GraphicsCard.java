@@ -1,6 +1,5 @@
 package com.sbd.sbdproject.model.graphicsCard;
 
-import com.sbd.sbdproject.model.gameCreation.GameCreation;
 import com.sbd.sbdproject.model.hardwareRequirement.HardwareRequirement;
 import java.time.LocalDate;
 import java.util.List;

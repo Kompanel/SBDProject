@@ -1,6 +1,9 @@
 package com.sbd.sbdproject.model.game;
 
+import com.sbd.sbdproject.model.game.dto.GameDto;
+import com.sbd.sbdproject.model.game.mapper.GameMapper;
 import java.util.List;
+import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -12,11 +15,15 @@ public class GameService {
 
   private final GameRepository gameRepository;
 
-  public List<Game> allGames(){
-    return gameRepository.findAll();
+  private final GameMapper mapper;
+
+  public List<GameDto> allGames() {
+    return gameRepository.findAll().stream()
+        .map(mapper::gameToGameDto)
+        .collect(Collectors.toList());
   }
 
-  public Page<Game> getAll(int page, int size) {
-    return gameRepository.findAll(PageRequest.of(page, size));
+  public Page<GameDto> getAll(int page, int size) {
+    return gameRepository.findAll(PageRequest.of(page, size)).map(mapper::gameToGameDto);
   }
 }

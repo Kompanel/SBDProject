@@ -30,22 +30,20 @@ public class GameCreation {
   @Column(name = "Budzet")
   private int budget;
 
-  @ManyToOne(cascade= {CascadeType.PERSIST, CascadeType.MERGE,
+  @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE,
       CascadeType.DETACH, CascadeType.REFRESH})
-  @JoinColumn(name="ID_gry")
+  @JoinColumn(name = "ID_gry")
   private Game game;
 
-  @ManyToOne(cascade= {CascadeType.PERSIST, CascadeType.MERGE,
+  @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE,
       CascadeType.DETACH, CascadeType.REFRESH})
-  @JoinColumn(name="ID_developera")
+  @JoinColumn(name = "ID_developera")
   private Developer developer;
 
 
   @ManyToOne(fetch = FetchType.LAZY,
-                cascade= {CascadeType.PERSIST, CascadeType.MERGE,
-                CascadeType.DETACH, CascadeType.REFRESH})
-  @JoinColumn(name="ID_silnika")
+      cascade = {CascadeType.PERSIST, CascadeType.MERGE,
+          CascadeType.DETACH, CascadeType.REFRESH})
+  @JoinColumn(name = "ID_silnika")
   private Engine engine;
-
-
 }

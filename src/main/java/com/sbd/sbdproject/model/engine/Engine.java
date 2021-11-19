@@ -38,9 +38,9 @@ public class Engine {
   @Column(name = "Premiera_silnika")
   private LocalDate enginePremiere;
 
-  @ManyToOne(cascade= {CascadeType.PERSIST, CascadeType.MERGE,
+  @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE,
       CascadeType.DETACH, CascadeType.REFRESH})
-  @JoinColumn(name="ID_jezyka")
+  @JoinColumn(name = "ID_jezyka")
   private ProgrammingLanguage programmingLanguage;
 
   @OneToMany(mappedBy = "engine", fetch = FetchType.LAZY,

@@ -1,6 +1,5 @@
 package com.sbd.sbdproject.model.processor;
 
-import com.sbd.sbdproject.model.gameCreation.GameCreation;
 import com.sbd.sbdproject.model.hardwareRequirement.HardwareRequirement;
 import java.time.LocalDate;
 import java.util.List;
@@ -70,6 +69,4 @@ public class Processor {
       cascade = {CascadeType.PERSIST, CascadeType.MERGE,
           CascadeType.DETACH, CascadeType.REFRESH})
   private List<HardwareRequirement> hardwareRequirements;
-
-
 }

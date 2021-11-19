@@ -1,18 +1,24 @@
 package com.sbd.sbdproject.model.developer;
 
+import com.sbd.sbdproject.model.developer.dto.DeveloperDto;
+import com.sbd.sbdproject.model.developer.mapper.DeveloperMapper;
+import java.util.List;
+import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 @RequiredArgsConstructor
 public class DeveloperService {
 
-    private final DeveloperRepository developerRepository;
+  private final DeveloperRepository developerRepository;
 
-    public List<Developer> getDevelopers() {
+  private final DeveloperMapper mapper;
 
-        return developerRepository.findAll();
-    }
+  public List<DeveloperDto> getDevelopers() {
+
+    return developerRepository.findAll().stream()
+        .map(mapper::developerToDeveloperDto)
+        .collect(Collectors.toList());
+  }
 }

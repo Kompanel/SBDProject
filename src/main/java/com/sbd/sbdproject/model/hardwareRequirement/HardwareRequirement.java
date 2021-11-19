@@ -4,7 +4,6 @@ import com.sbd.sbdproject.model.game.Game;
 import com.sbd.sbdproject.model.graphicsCard.GraphicsCard;
 import com.sbd.sbdproject.model.processor.Processor;
 import java.util.Set;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

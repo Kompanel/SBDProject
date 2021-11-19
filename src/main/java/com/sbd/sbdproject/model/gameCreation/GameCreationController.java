@@ -1,23 +1,22 @@
 package com.sbd.sbdproject.model.gameCreation;
 
-import lombok.Getter;
+import com.sbd.sbdproject.model.gameCreation.dto.GameCreationDto;
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
-
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("gameCreation")
+@RequestMapping("game-creation")
 public class GameCreationController {
 
-    private final GameCreationService gameCreationService;
+  private final GameCreationService gameCreationService;
 
-    @GetMapping("al")
-    public List<GameCreation> getGameCreations() {
+  @GetMapping("al")
+  public List<GameCreationDto> getGameCreations() {
 
-        return gameCreationService.getGameCreations();
-    }
+    return gameCreationService.getGameCreations();
+  }
 }

@@ -49,12 +49,12 @@ public class Game {
       inverseJoinColumns = @JoinColumn(name = "ID_wymagania"))
   Set<HardwareRequirement> hardwareRequirements;
 
-  @ManyToOne(cascade= {CascadeType.PERSIST, CascadeType.MERGE,
+  @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE,
       CascadeType.DETACH, CascadeType.REFRESH})
-  @JoinColumn(name="ID_platformy")
+  @JoinColumn(name = "ID_platformy")
   private GamePlatform gamePlatform;
 
-  @OneToMany(mappedBy = "game",  fetch = FetchType.LAZY,
+  @OneToMany(mappedBy = "game", fetch = FetchType.LAZY,
       cascade = {CascadeType.PERSIST, CascadeType.MERGE,
           CascadeType.DETACH, CascadeType.REFRESH})
   private List<GameCreation> gameCreations;

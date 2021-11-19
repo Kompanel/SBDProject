@@ -35,11 +35,11 @@ public class GamePlatform {
   private LocalDate platformPremiere;
 
   @Column(name = "Cena_platformy")
-  private int platformPrice;
+  private Integer platformPrice;
 
   @OneToMany(mappedBy = "gamePlatform",
-             cascade = {CascadeType.PERSIST, CascadeType.MERGE,
-                 CascadeType.DETACH, CascadeType.REFRESH})
+      cascade = {CascadeType.PERSIST, CascadeType.MERGE,
+          CascadeType.DETACH, CascadeType.REFRESH})
   private List<Game> games;
 
 }
