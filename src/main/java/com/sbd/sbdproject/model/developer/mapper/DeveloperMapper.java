@@ -2,7 +2,6 @@ package com.sbd.sbdproject.model.developer.mapper;
 
 import com.sbd.sbdproject.model.developer.Developer;
 import com.sbd.sbdproject.model.developer.dto.DeveloperDto;
-import com.sbd.sbdproject.model.gameCreation.dto.GameCreationDto;
 import com.sbd.sbdproject.model.gameCreation.mapper.GameCreationMapper;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;

@@ -4,6 +4,7 @@ import com.sbd.sbdproject.model.engine.dto.EngineDto;
 import com.sbd.sbdproject.model.engine.mapper.EngineMapper;
 import java.util.List;
 import java.util.stream.Collectors;
+import javax.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -20,5 +21,12 @@ public class EngineService {
     return engineRepository.findAll().stream()
         .map(mapper::engineToEngineDto)
         .collect(Collectors.toList());
+  }
+
+  public EngineDto getEngineById(int id) {
+
+    return engineRepository.findById(id)
+        .map(mapper::engineToEngineDto)
+        .orElseThrow(EntityNotFoundException::new);
   }
 }

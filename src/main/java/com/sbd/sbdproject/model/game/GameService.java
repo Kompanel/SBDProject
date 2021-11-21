@@ -4,9 +4,8 @@ import com.sbd.sbdproject.model.game.dto.GameDto;
 import com.sbd.sbdproject.model.game.mapper.GameMapper;
 import java.util.List;
 import java.util.stream.Collectors;
+import javax.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -17,13 +16,17 @@ public class GameService {
 
   private final GameMapper mapper;
 
-  public List<GameDto> allGames() {
+  public List<GameDto> getGames() {
+
     return gameRepository.findAll().stream()
         .map(mapper::gameToGameDto)
         .collect(Collectors.toList());
   }
 
-  public Page<GameDto> getAll(int page, int size) {
-    return gameRepository.findAll(PageRequest.of(page, size)).map(mapper::gameToGameDto);
+  public GameDto getGameById(int id) {
+
+    return gameRepository.findById(id)
+        .map(mapper::gameToGameDto)
+        .orElseThrow(EntityNotFoundException::new);
   }
 }

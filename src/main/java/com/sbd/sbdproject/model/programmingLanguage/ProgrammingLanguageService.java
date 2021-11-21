@@ -4,6 +4,7 @@ import com.sbd.sbdproject.model.programmingLanguage.dto.ProgrammingLanguageDto;
 import com.sbd.sbdproject.model.programmingLanguage.mapper.ProgrammingLanguageMapper;
 import java.util.List;
 import java.util.stream.Collectors;
+import javax.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -19,5 +20,12 @@ public class ProgrammingLanguageService {
     return programmingLanguageRepository.findAll().stream()
         .map(mapper::toProgrammingLanguageDto)
         .collect(Collectors.toList());
+  }
+
+  public ProgrammingLanguageDto getProgrammingLanguageById(int id) {
+
+    return programmingLanguageRepository.findById(id)
+        .map(mapper::toProgrammingLanguageDto)
+        .orElseThrow(EntityNotFoundException::new);
   }
 }
