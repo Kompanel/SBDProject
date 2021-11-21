@@ -1,6 +1,7 @@
 package com.sbd.sbdproject.model.game;
 
 import com.sbd.sbdproject.model.game.dto.GameDto;
+import com.sbd.sbdproject.model.game.dto.GameDtoForList;
 import com.sbd.sbdproject.model.game.mapper.GameMapper;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -16,10 +17,10 @@ public class GameService {
 
   private final GameMapper mapper;
 
-  public List<GameDto> getGames() {
+  public List<GameDtoForList> getGames() {
 
     return gameRepository.findAll().stream()
-        .map(mapper::gameToGameDto)
+        .map(mapper::forListOfGames)
         .collect(Collectors.toList());
   }
 

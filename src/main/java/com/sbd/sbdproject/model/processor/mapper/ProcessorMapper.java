@@ -3,6 +3,7 @@ package com.sbd.sbdproject.model.processor.mapper;
 import com.sbd.sbdproject.model.hardwareRequirement.mapper.HardwareRequirementMapper;
 import com.sbd.sbdproject.model.processor.Processor;
 import com.sbd.sbdproject.model.processor.dto.ProcessorDto;
+import com.sbd.sbdproject.model.processor.dto.ProcessorDtoForList;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
@@ -21,4 +22,6 @@ public interface ProcessorMapper {
       @Mapping(target = "hardwareRequirements", ignore = true)
   })
   ProcessorDto toProcessorDtoWithoutHR(Processor processor);
+
+  ProcessorDtoForList toListOfProcessors(Processor processor);
 }

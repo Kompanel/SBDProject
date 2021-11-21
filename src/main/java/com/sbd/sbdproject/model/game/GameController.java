@@ -1,6 +1,7 @@
 package com.sbd.sbdproject.model.game;
 
 import com.sbd.sbdproject.model.game.dto.GameDto;
+import com.sbd.sbdproject.model.game.dto.GameDtoForList;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -18,7 +19,7 @@ public class GameController {
   private final GameService gameService;
 
   @GetMapping
-  public List<GameDto> getGames() {
+  public List<GameDtoForList> getGames() {
 
     return gameService.getGames();
   }

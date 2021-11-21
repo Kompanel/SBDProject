@@ -1,6 +1,7 @@
 package com.sbd.sbdproject.model.processor;
 
 import com.sbd.sbdproject.model.processor.dto.ProcessorDto;
+import com.sbd.sbdproject.model.processor.dto.ProcessorDtoForList;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -18,7 +19,7 @@ public class ProcessorController {
   private final ProcessorService processorService;
 
   @GetMapping
-  public List<ProcessorDto> getProcessors() {
+  public List<ProcessorDtoForList> getProcessors() {
 
     return processorService.getProcessors();
   }

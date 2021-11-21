@@ -42,6 +42,9 @@ public class Game {
   @Column(name = "Cena_gry")
   private double gamePrice;
 
+  @Column(name = "ZDJECIE")
+  private String imageUrl;
+
   @ManyToMany
   @JoinTable(
       name = "Wymagania_gry",

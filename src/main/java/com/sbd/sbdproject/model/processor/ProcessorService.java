@@ -1,6 +1,7 @@
 package com.sbd.sbdproject.model.processor;
 
 import com.sbd.sbdproject.model.processor.dto.ProcessorDto;
+import com.sbd.sbdproject.model.processor.dto.ProcessorDtoForList;
 import com.sbd.sbdproject.model.processor.mapper.ProcessorMapper;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -16,10 +17,10 @@ public class ProcessorService {
 
   private final ProcessorMapper mapper;
 
-  public List<ProcessorDto> getProcessors() {
+  public List<ProcessorDtoForList> getProcessors() {
 
     return processorRepository.findAll().stream()
-        .map(mapper::processorToProcessorDto)
+        .map(mapper::toListOfProcessors)
         .collect(Collectors.toList());
   }
 

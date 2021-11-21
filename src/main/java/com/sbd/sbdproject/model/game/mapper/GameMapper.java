@@ -2,6 +2,7 @@ package com.sbd.sbdproject.model.game.mapper;
 
 import com.sbd.sbdproject.model.game.Game;
 import com.sbd.sbdproject.model.game.dto.GameDto;
+import com.sbd.sbdproject.model.game.dto.GameDtoForList;
 import com.sbd.sbdproject.model.gameCreation.mapper.GameCreationMapper;
 import com.sbd.sbdproject.model.gamePlatform.mapper.GamePlatformMapper;
 import com.sbd.sbdproject.model.hardwareRequirement.mapper.HardwareRequirementMapper;
@@ -47,4 +48,6 @@ public interface GameMapper {
       @Mapping(target = "hardwareRequirements", ignore = true)
   })
   GameDto gameToGameDtoWithoutHr(Game game);
+
+  GameDtoForList forListOfGames(Game game);
 }
