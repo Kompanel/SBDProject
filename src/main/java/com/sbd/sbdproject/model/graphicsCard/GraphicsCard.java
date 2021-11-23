@@ -50,6 +50,9 @@ public class GraphicsCard {
   @Column(name = "Wartosc_benchmark")
   private int benchmarkValue;
 
+  @Column(name = "Zdjecie")
+  private String imageUrl;
+
   @OneToMany(mappedBy = "graphicsCard", fetch = FetchType.LAZY,
       cascade = {CascadeType.PERSIST, CascadeType.MERGE,
           CascadeType.DETACH, CascadeType.REFRESH})
