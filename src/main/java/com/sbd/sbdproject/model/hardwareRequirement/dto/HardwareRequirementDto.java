@@ -15,7 +15,7 @@ public class HardwareRequirementDto {
 
   private double discSpace;
 
-  private int ram;
+  private Integer ram;
 
   private String requirementType;
 

@@ -32,7 +32,7 @@ public class HardwareRequirement {
   private double discSpace;
 
   @Column(name = "ilosc_RAM")
-  private int ram;
+  private Integer ram;
 
   @Column(name = "Typ_wymagania")
   private String requirementType;

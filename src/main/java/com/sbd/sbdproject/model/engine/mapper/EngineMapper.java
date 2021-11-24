@@ -23,12 +23,14 @@ public interface EngineMapper {
 
   @Named("engineWithoutPlanguage")
   @Mappings({
-      @Mapping(target = "programmingLanguage", ignore = true)
+      @Mapping(target = "programmingLanguage", ignore = true),
+      @Mapping(target = "gameCreations", qualifiedByName = "gameCreationWithoutEngine")
   })
   EngineDto toEngineDtoWithoutPlanguage(Engine engine);
 
   @Named("engineWithoutGameCreations")
   @Mappings({
+      @Mapping(target = "programmingLanguage", qualifiedByName = "pLanguageWithoutEngines"),
       @Mapping(target = "gameCreations", ignore = true)
   })
   EngineDto toEngineDtoWithoutGameCreations(Engine engine);

@@ -27,18 +27,24 @@ public interface GameCreationMapper {
 
   @Named("gameCreationWithoutDeveloper")
   @Mappings({
-      @Mapping(target = "developer", ignore = true)
+      @Mapping(target = "developer", ignore = true),
+      @Mapping(target = "engine", qualifiedByName = "engineWithoutGameCreations"),
+      @Mapping(target = "game", qualifiedByName = "gameWithoutGameCreations")
   })
   GameCreationDto toGameCreationDtoWithoutDeveloper(GameCreation gameCreation);
 
   @Named("gameCreationWithoutEngine")
   @Mappings({
-      @Mapping(target = "engine", ignore = true)
+      @Mapping(target = "developer", qualifiedByName = "developerWithoutGameCreations"),
+      @Mapping(target = "engine", ignore = true),
+      @Mapping(target = "game", qualifiedByName = "gameWithoutGameCreations")
   })
   GameCreationDto toGameCreationDtoWithoutEngine(GameCreation gameCreation);
 
   @Named("gameCreationWithoutGame")
   @Mappings({
+      @Mapping(target = "developer", qualifiedByName = "developerWithoutGameCreations"),
+      @Mapping(target = "engine", qualifiedByName = "engineWithoutGameCreations"),
       @Mapping(target = "game", ignore = true)
   })
   GameCreationDto toGameCreationDtoWithoutGame(GameCreation gameCreation);
