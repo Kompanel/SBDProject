@@ -2,6 +2,7 @@ package com.sbd.sbdproject.model.game;
 
 import com.sbd.sbdproject.model.game.dto.GameCreatorDto;
 import com.sbd.sbdproject.model.game.dto.GameDto;
+import com.sbd.sbdproject.model.game.dto.RequirementPassageDto;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -46,5 +48,13 @@ public class GameController {
   @DeleteMapping("{id}")
   public void deleteGame(@PathVariable int id) {
     gameService.deleteGame(id);
+  }
+
+  @GetMapping("check_requirements")
+  public RequirementPassageDto checkRequirements(@RequestParam(name = "gameId") int gameId,
+      @RequestParam(name = "processorId") int processorId,
+      @RequestParam(name = "cardId") int cardId, @RequestParam(name = "ram") int ram) {
+
+    return gameService.checkRequirements(gameId, processorId, cardId, ram);
   }
 }

@@ -2,9 +2,14 @@ package com.sbd.sbdproject.model.game;
 
 import com.sbd.sbdproject.model.game.dto.GameCreatorDto;
 import com.sbd.sbdproject.model.game.dto.GameDto;
+import com.sbd.sbdproject.model.game.dto.RequirementPassageDto;
 import com.sbd.sbdproject.model.game.mapper.GameMapper;
 import com.sbd.sbdproject.model.gamePlatform.GamePlatformRepository;
+import com.sbd.sbdproject.model.graphicsCard.GraphicsCardRepository;
+import com.sbd.sbdproject.model.hardwareRequirement.HardwareRequirement;
+import com.sbd.sbdproject.model.processor.ProcessorRepository;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 import javax.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
@@ -17,6 +22,10 @@ public class GameService {
   private final GameRepository gameRepository;
 
   private final GamePlatformRepository gamePlatformRepository;
+
+  private final ProcessorRepository processorRepository;
+
+  private final GraphicsCardRepository graphicsCardRepository;
 
   private final GameMapper mapper;
 
@@ -60,9 +69,37 @@ public class GameService {
     gameRepository.save(game);
   }
 
-
   public void deleteGame(int id) {
 
     gameRepository.delete(gameRepository.findById(id).orElseThrow(EntityNotFoundException::new));
+  }
+
+  public RequirementPassageDto checkRequirements(int gameId, int processorId, int cardId, int ram) {
+
+    Set<HardwareRequirement> list = gameRepository.findById(gameId).get().getHardwareRequirements();
+
+    int graphicsCardBenchmark = graphicsCardRepository.getById(cardId).getBenchmarkValue();
+    int processorBenchmark = processorRepository.getById(processorId).getBenchmarkValue();
+
+    RequirementPassageDto requirementPassageDto = RequirementPassageDto.builder().build();
+
+    list.forEach(hr -> {
+      if (hr.getRequirementType().equals("Minimalne")) {
+
+        requirementPassageDto.setMinimalGraphicsCard(
+            graphicsCardBenchmark >= hr.getGraphicsCard().getBenchmarkValue());
+        requirementPassageDto
+            .setMinimalProcessor(processorBenchmark >= hr.getProcessor().getBenchmarkValue());
+        requirementPassageDto.setMinimalRam(ram >= hr.getRam());
+      } else {
+        requirementPassageDto.setRecommendedGraphicsCard(
+            graphicsCardBenchmark >= hr.getGraphicsCard().getBenchmarkValue());
+        requirementPassageDto
+            .setRecommendedProcessor(processorBenchmark >= hr.getProcessor().getBenchmarkValue());
+        requirementPassageDto.setRecommendedRam(ram >= hr.getRam());
+      }
+    });
+
+    return requirementPassageDto;
   }
 }
