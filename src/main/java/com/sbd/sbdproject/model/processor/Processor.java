@@ -71,6 +71,9 @@ public class Processor {
   @Column(name = "Warosc_benchmark")
   private int benchmarkValue;
 
+  @Column(name = "zdjecie")
+  private String imageUrl;
+
   @OneToMany(mappedBy = "processor", fetch = FetchType.LAZY,
       cascade = {CascadeType.PERSIST, CascadeType.MERGE,
           CascadeType.DETACH, CascadeType.REFRESH})

@@ -30,6 +30,11 @@ public class GameController {
     return gameService.getGames();
   }
 
+  @GetMapping("PC")
+  public List<GameDto> getPcGames() {
+    return gameService.getPcGames();
+  }
+
   @GetMapping("{id}")
   public GameDto getGame(@PathVariable int id) {
     return gameService.getGameById(id);

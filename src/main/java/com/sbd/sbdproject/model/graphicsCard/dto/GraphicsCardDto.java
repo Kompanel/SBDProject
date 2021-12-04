@@ -28,6 +28,8 @@ public class GraphicsCardDto {
 
   private int benchmarkValue;
 
+  private String imageUrl;
+
   @JsonInclude(Include.NON_NULL)
   private List<HardwareRequirementDto> hardwareRequirements;
 }

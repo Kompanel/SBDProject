@@ -21,6 +21,8 @@ public class GameDto {
 
   private double gamePrice;
 
+  private String imageUrl;
+
   @JsonInclude(Include.NON_NULL)
   Set<HardwareRequirementDto> hardwareRequirements;
 

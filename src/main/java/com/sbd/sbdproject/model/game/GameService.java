@@ -102,4 +102,13 @@ public class GameService {
 
     return requirementPassageDto;
   }
+
+  public List<GameDto> getPcGames() {
+    return gameRepository.findAll().stream()
+        .filter(game -> game.getGamePlatform()
+            .getPlatformName()
+            .equals("PC"))
+        .map(mapper::gameToGameDto)
+        .collect(Collectors.toList());
+  }
 }
