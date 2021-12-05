@@ -42,6 +42,7 @@ public class GraphicsCardService {
         .premiereDate(graphicsCardCreatorDto.getPremiereDate())
         .cardPrice(graphicsCardCreatorDto.getCardPrice())
         .benchmarkValue(graphicsCardCreatorDto.getBenchmarkValue())
+        .imageUrl(graphicsCardCreatorDto.getImageUrl())
         .build();
 
     graphicsRepository.save(toBeSaved);
@@ -60,6 +61,7 @@ public class GraphicsCardService {
     graphicsCard.setPremiereDate(graphicsCardCreatorDto.getPremiereDate());
     graphicsCard.setCardPrice(graphicsCardCreatorDto.getCardPrice());
     graphicsCard.setBenchmarkValue(graphicsCardCreatorDto.getBenchmarkValue());
+    graphicsCard.setImageUrl(graphicsCardCreatorDto.getImageUrl());
 
     graphicsRepository.save(graphicsCard);
   }

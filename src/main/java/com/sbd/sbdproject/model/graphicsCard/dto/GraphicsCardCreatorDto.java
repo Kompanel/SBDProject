@@ -21,4 +21,6 @@ public class GraphicsCardCreatorDto {
   private int cardPrice;
 
   private int benchmarkValue;
+
+  private String imageUrl;
 }

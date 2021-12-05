@@ -31,4 +31,6 @@ public class ProcessorCreatorDto {
   private int processorPrice;
 
   private int benchmarkValue;
+
+  private String imageUrl;
 }

@@ -1,6 +1,5 @@
 package com.sbd.sbdproject.model.game.dto;
 
-import com.sbd.sbdproject.model.gamePlatform.GamePlatform;
 import java.time.LocalDate;
 import lombok.Data;
 
@@ -14,4 +13,6 @@ public class GameCreatorDto {
   private double gamePrice;
 
   private Integer gamePlatformId;
+
+  private String imageUrl;
 }

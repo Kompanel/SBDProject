@@ -51,6 +51,7 @@ public class GameService {
         .gamePrice(gameCreatorDto.getGamePrice())
         .gamePlatform(
             gamePlatformRepository.findById(gameCreatorDto.getGamePlatformId()).orElse(null))
+        .imageUrl(gameCreatorDto.getImageUrl())
         .build();
 
     gameRepository.save(toBeSaved);
@@ -65,6 +66,7 @@ public class GameService {
     game.setGamePrice(gameCreatorDto.getGamePrice());
     game.setGamePlatform(
         gamePlatformRepository.findById(gameCreatorDto.getGamePlatformId()).orElse(null));
+    game.setImageUrl(gameCreatorDto.getImageUrl());
 
     gameRepository.save(game);
   }

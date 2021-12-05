@@ -47,6 +47,7 @@ public class ProcessorService {
         .powerConsumption(processorCreatorDto.getPowerConsumption())
         .processorPrice(processorCreatorDto.getProcessorPrice())
         .benchmarkValue(processorCreatorDto.getBenchmarkValue())
+        .imageUrl(processorCreatorDto.getImageUrl())
         .build();
 
     processorRepository.save(toBeSaved);
@@ -70,6 +71,7 @@ public class ProcessorService {
     processor.setPowerConsumption(processorCreatorDto.getPowerConsumption());
     processor.setProcessorPrice(processorCreatorDto.getProcessorPrice());
     processor.setBenchmarkValue(processorCreatorDto.getBenchmarkValue());
+    processor.setImageUrl(processorCreatorDto.getImageUrl());
 
     processorRepository.save(processor);
   }
